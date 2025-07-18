@@ -2028,12 +2028,34 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
 
         async function fetchCategoriesAndProducts() {
             try {
-                const [categoriesResponse, productsResponse] = await Promise.all([
-                    fetch('categories.json'),
-                    Promise.resolve(generateDemoProducts()) // Keep products local for now
-                ]);
+                const categories = [
+                    {
+                        "id": "course",
+                        "name": "Course",
+                        "icon": "fas fa-graduation-cap",
+                        "subtitle": "0 Premium Courses"
+                    },
+                    {
+                        "id": "subscription",
+                        "name": "Subscription",
+                        "icon": "fas fa-key",
+                        "subtitle": "0 Premium Services"
+                    },
+                    {
+                        "id": "software",
+                        "name": "Software",
+                        "icon": "fas fa-laptop-code",
+                        "subtitle": "0 Bundle Packages"
+                    },
+                    {
+                        "id": "ebook",
+                        "name": "Ebook",
+                        "icon": "fas fa-book-open",
+                        "subtitle": "0 Digital Guides"
+                    }
+                ];
 
-                const categories = await categoriesResponse.json();
+                const productsResponse = generateDemoProducts();
                 allProductsData = productsResponse.map(p => ({...p, slug: createSlug(p.name)}));
 
                 populateCategories(categories);
