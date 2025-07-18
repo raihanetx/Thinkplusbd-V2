@@ -231,6 +231,31 @@
         </div>
     </div>
 
+    <!-- Category Code Generator Section -->
+    <div class="container" id="categoryGeneratorContainer">
+        <h2 class="section-title">Category Code Generator</h2>
+        <form id="categoryForm">
+            <div class="form-group">
+                <label for="categoryName">Category Name:</label>
+                <input type="text" id="categoryName" required placeholder="e.g., New Category">
+            </div>
+            <div class="form-group">
+                <label for="categorySubtitle">Category Subtitle:</label>
+                <input type="text" id="categorySubtitle" required placeholder="e.g., 0 New Items">
+            </div>
+            <div class="form-group">
+                <label for="categoryIcon">Font Awesome Icon Class:</label>
+                <input type="text" id="categoryIcon" required placeholder="e.g., fas fa-star">
+            </div>
+            <button type="submit">Generate Category Code</button>
+        </form>
+        <div id="generatedCategoryCodeContainer" class="hidden">
+            <h2>Generated Category Code:</h2>
+            <pre><code id="generatedCategoryCode"></code></pre>
+            <button type="button" id="copyCategoryCodeBtn">Copy Category Code</button>
+        </div>
+    </div>
+
     <!-- Product Card Code Generator Section -->
     <div class="container" id="productCardContainer">
         <h1 class="section-title">Product Card Code Generator</h1>
@@ -308,6 +333,39 @@
         const generatedCodeContainer = document.getElementById('generatedCodeContainer');
         const generatedCodeElement = document.getElementById('generatedCode');
         const copyCodeBtn = document.getElementById('copyCodeBtn');
+        const categoryForm = document.getElementById('categoryForm');
+        const generatedCategoryCodeContainer = document.getElementById('generatedCategoryCodeContainer');
+        const generatedCategoryCodeElement = document.getElementById('generatedCategoryCode');
+        const copyCategoryCodeBtn = document.getElementById('copyCategoryCodeBtn');
+
+        if (categoryForm) {
+            categoryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const categoryName = document.getElementById('categoryName').value;
+                const categorySubtitle = document.getElementById('categorySubtitle').value;
+                const categoryIcon = document.getElementById('categoryIcon').value;
+                const categoryCode = `
+                <div class="category" onclick="navigateTo('products', '${categoryName.toLowerCase()}')">
+                    <div class="category-icon-wrapper"><i class="${categoryIcon} category-icon-fa" aria-hidden="true"></i></div>
+                    <p class="category-name">${categoryName}</p>
+                    <p class="category-subtitle" id="category-count-${categoryName.toLowerCase()}">${categorySubtitle}</p>
+                </div>
+            `;
+                generatedCategoryCodeElement.textContent = categoryCode.trim();
+                generatedCategoryCodeContainer.classList.remove('hidden');
+            });
+        }
+
+        if (copyCategoryCodeBtn) {
+            copyCategoryCodeBtn.addEventListener('click', function() {
+                navigator.clipboard.writeText(generatedCategoryCodeElement.textContent)
+                    .then(() => alert('Category code copied to clipboard!'))
+                    .catch(err => {
+                        console.error('Failed to copy category code: ', err);
+                        alert('Failed to copy category code. Please copy manually.');
+                    });
+            });
+        }
 
         categorySelect.addEventListener('change', function() {
             if (this.value === 'subscription') {
