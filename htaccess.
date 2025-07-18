@@ -1,0 +1,83 @@
+# ==============================================================================
+# THINK PLUS BD - .htaccess Configuration (Corrected Version)
+# ==============================================================================
+
+# ## 1. URL Rewriting for Single Page Application (SPA) ##
+# এটি আপনার সাইটের লিঙ্কগুলো (যেমন #products/all) সঠিকভাবে কাজ করতে সাহায্য করবে
+# যদি কেউ সরাসরি yoursite.com/products/all - এই লিঙ্কে যায়, সার্ভার তাকে index.html ফাইলে পাঠাবে
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# অ্যাডমিন ফাইলগুলোকে এই নিয়মের বাইরে রাখা হয়েছে
+RewriteCond %{REQUEST_URI} !^/(admin_login|admin_dashboard|confirm_order|delete_order|save_order|fetch_user_orders_status)\.php$ [NC]
+RewriteRule . /index.html [L]
+
+
+# ## 2. Protect Sensitive Files ##
+# সরাসরি ব্রাউজার থেকে সংবেদনশীল ফাইলে অ্যাক্সেস বন্ধ করা হয়েছে
+# এটি আপনার orders.json ফাইলকে সুরক্ষিত রাখার জন্য সবচেয়ে গুরুত্বপূর্ণ অংশ
+<FilesMatch "\.(htaccess|htpasswd|ini|log|json|txt)$">
+    Require all denied
+</FilesMatch>
+
+# PHP ফাইলগুলোকে সরাসরি অ্যাক্সেস করতে দেওয়া হচ্ছে, কিন্তু শুধুমাত্র নির্দিষ্ট কিছু ফাইল
+# এটি অ্যাডমিন প্যানেলকে কাজ করতে দেবে
+<FilesMatch "^(admin_login|admin_dashboard|confirm_order|delete_order|save_order|fetch_user_orders_status)\.php$">
+    Require all granted
+</FilesMatch>
+
+
+# ## 3. Improve Performance with Browser Caching ##
+# ব্যবহারকারীর ব্রাউজারকে কিছু ফাইল মনে রাখতে বলা হয়েছে, যাতে সাইট দ্রুত লোড হয়
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
+</IfModule>
+
+
+# ## 4. Enable Gzip/Brotli Compression ##
+# ফাইল সাইজ ছোট করে ওয়েবসাইট দ্রুত লোড করার জন্য কম্প্রেশন চালু করা হলো
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ## 5. Additional Security Headers ##
+# কিছু সাধারণ নিরাপত্তা ঝুঁকি থেকে সাইটকে সুরক্ষিত রাখতে এই হেডারগুলো যোগ করা হলো
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
