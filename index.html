@@ -1134,25 +1134,8 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             </button>
         </div>
         <div class="off-canvas-content">
-            <nav class="off-canvas-nav">
-                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('home'); closeOffCanvasMenu(); return false;">
-                    <i class="fas fa-home"></i> <span>Home</span>
-                </a>
-                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('products', 'all'); closeOffCanvasMenu(); return false;">
-                    <i class="fas fa-store"></i> <span>All Products</span>
-                </a>
-                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('products', 'course'); closeOffCanvasMenu(); return false;">
-                    <i class="fas fa-graduation-cap"></i> <span>Courses</span>
-                </a>
-                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('products', 'subscription'); closeOffCanvasMenu(); return false;">
-                    <i class="fas fa-key"></i> <span>Subscriptions</span>
-                </a>
-                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('products', 'software'); closeOffCanvasMenu(); return false;">
-                    <i class="fas fa-laptop-code"></i> <span>Software</span>
-                </a>
-                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('products', 'ebook'); closeOffCanvasMenu(); return false;">
-                    <i class="fas fa-book-open"></i> <span>Ebooks</span>
-                </a>
+            <nav class="off-canvas-nav" id="offCanvasNav">
+                <!-- Mobile menu items will be dynamically loaded here -->
             </nav>
         </div>
     </div>
@@ -1186,177 +1169,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             <div class="container">
                  <h2 class="category-section-title">Product Categories</h2>
             </div>
-            <section class="categories container">
-                <div class="category" onclick="navigateTo('products', 'course')">
-                    <div class="category-icon-wrapper"><i class="fas fa-graduation-cap category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Course</p>
-                    <p class="category-subtitle" id="category-count-course">0 Premium Courses</p>
-                </div>
-                <div class="category" onclick="navigateTo('products', 'subscription')">
-                    <div class="category-icon-wrapper"><i class="fas fa-key category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Subscription</p>
-                    <p class="category-subtitle" id="category-count-subscription">0 Premium Services</p>
-                </div>
-                <div class="category" onclick="navigateTo('products', 'software')">
-                    <div class="category-icon-wrapper"><i class="fas fa-laptop-code category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Software</p>
-                    <p class="category-subtitle" id="category-count-software">0 Bundle Packages</p>
-                </div>
-                <div class="category" onclick="navigateTo('products', 'ebook')">
-                    <div class="category-icon-wrapper"><i class="fas fa-book-open category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Ebook</p>
-                    <p class="category-subtitle" id="category-count-ebook">0 Digital Guides</p>
-                </div>
-                <!-- Add new categories here -->
+            <section class="categories container" id="categoriesContainer">
+                <!-- Categories will be dynamically loaded here -->
             </section>
 
-            <section class="product-listings container">
-                <div class="featured-section-header">
-                    <h2 class="category-title">Courses</h2>
-                    <a class="view-all" onclick="navigateTo('products', 'course')">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="featuredCoursesGrid">
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="featured-section-header">
-                    <h2 class="category-title">Subscriptions</h2>
-                    <a class="view-all" onclick="navigateTo('products', 'subscription')">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="popularSubscriptionsGrid">
-                     <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="featured-section-header">
-                    <h2 class="category-title">Software</h2>
-                    <a class="view-all" onclick="navigateTo('products', 'software')">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid" id="topSoftwareGrid">
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="featured-section-header">
-                    <h2 class="category-title">Ebooks</h2>
-                    <a class="view-all" onclick="navigateTo('products', 'ebook')">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
-                </div>
-                <div class="homepage-products-grid ebooks-grid" id="latestEbooksGrid">
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card">
-                        <div class="skeleton-card-image"><div class="skeleton-loading"></div></div>
-                        <div class="skeleton-card-content">
-                            <div class="skeleton-card-title skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-description skeleton-loading"></div>
-                            <div class="skeleton-card-price skeleton-loading"></div>
-                            <div class="skeleton-card-buttons"><div class="skeleton-card-button skeleton-loading full-width"></div></div>
-                        </div>
-                    </div>
-                </div>
+            <section class="product-listings container" id="product-listings">
+                <!-- Featured products will be dynamically loaded here -->
             </section>
 
             <section class="why-choose-us">
@@ -1776,10 +1594,9 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             mobileBoxSearchButton: document.getElementById('mobileBoxSearchButton'),
             mobileSearchContainer: document.querySelector('.mobile-search-container'),
             productsPageTitle: document.getElementById('productsPageTitle'),
-            featuredCoursesGrid: document.getElementById('featuredCoursesGrid'),
-            popularSubscriptionsGrid: document.getElementById('popularSubscriptionsGrid'),
-            topSoftwareGrid: document.getElementById('topSoftwareGrid'),
-            latestEbooksGrid: document.getElementById('latestEbooksGrid'),
+                categoriesContainer: document.getElementById('categoriesContainer'),
+                productListings: document.getElementById('product-listings'),
+                offCanvasNav: document.getElementById('offCanvasNav'),
             ordersListContainer: document.getElementById('ordersListContainer'),
             noOrdersMessage: document.getElementById('noOrdersMessage'),
             offCanvasMenu: document.getElementById('offCanvasMenu'),
@@ -1819,37 +1636,11 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
 
         function showGuaranteedSkeletonForHomepage() {
-            const gridsToSkeletonize = [
-                domElements.featuredCoursesGrid, domElements.popularSubscriptionsGrid,
-                domElements.topSoftwareGrid, domElements.latestEbooksGrid
-            ];
-            gridsToSkeletonize.forEach(grid => {
-                if (grid) {
-                    const existingContent = grid.querySelectorAll('.product-card:not(.skeleton-card)');
-                    existingContent.forEach(content => content.style.display = 'none');
-                    showSkeletonCards(grid, window.innerWidth <= 768 ? 2 : 3, true);
-                }
-            });
+            // This function can be simplified or removed if categories are always dynamic
         }
 
         function displayActualContent() {
-            const gridsToUpdate = [
-                domElements.featuredCoursesGrid, domElements.popularSubscriptionsGrid,
-                domElements.topSoftwareGrid, domElements.latestEbooksGrid
-            ];
-            gridsToUpdate.forEach(grid => {
-                if (grid) {
-                    removeSkeletonCards(grid);
-                    const hiddenContent = grid.querySelectorAll('.product-card:not(.skeleton-card)');
-                    hiddenContent.forEach(content => content.style.display = 'flex');
-                }
-            });
-
-            if (allProductsData && allProductsData.length > 0) {
-                populateFeaturedProducts();
-            } else {
-                populateFeaturedProducts(); 
-            }
+            // This function will be replaced by the dynamic category loading
 
             const bannerImg = document.querySelector('#homePage .banner-image-container img.image-fade-in');
             if (bannerImg) {
@@ -2322,22 +2113,89 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             ];
         }
 
-        async function fetchProducts(forceRefresh = false) {
-            if (isLoadingProducts || (allProductsData.length > 0 && !forceRefresh && !initialLoadPending)) { return; }
-            isLoadingProducts = true;
+        async function fetchCategoriesAndProducts() {
             try {
-                allProductsData = generateDemoProducts().map(p => ({...p, slug: createSlug(p.name)}));
-                if (!Array.isArray(allProductsData)) { throw new Error("Invalid product data format."); }
-                updateCategoryCountsInDOM();
-                if (currentPage === 'home') { displayActualContent(); }
-                if (domElements.pages.products.classList.contains('active')) { filterProducts(currentNavigationContext?.id || 'all', currentNavigationContext?.searchTerm); }
+                const [categoriesResponse, productsResponse] = await Promise.all([
+                    fetch('categories.json'),
+                    Promise.resolve(generateDemoProducts()) // Keep products local for now
+                ]);
+
+                const categories = await categoriesResponse.json();
+                allProductsData = productsResponse.map(p => ({...p, slug: createSlug(p.name)}));
+
+                populateCategories(categories);
+                populateFeaturedProducts(categories, allProductsData);
+                populateMobileMenu(categories);
+                updateCategoryCountsInDOM(categories, allProductsData);
+
             } catch (error) {
-                console.error("Could not load products:", error); allProductsData = []; showToast('Error loading products.', 'error critical');
-                const gridsToClearOnError = [ domElements.featuredCoursesGrid, domElements.popularSubscriptionsGrid, domElements.topSoftwareGrid, domElements.latestEbooksGrid, domElements.allProductsGrid ];
-                gridsToClearOnError.forEach(grid => { if(grid) removeSkeletonCards(grid); });
-                allProductsData = generateDemoProducts().map(p => ({...p, slug: createSlug(p.name)})); // Fallback
-                if (currentPage === 'home') { displayActualContent(); }
-            } finally { isLoadingProducts = false; if (initialLoadPending) initialLoadPending = false; }
+                console.error("Could not load categories or products:", error);
+                showToast('Error loading page content.', 'error critical');
+            }
+        }
+
+        function populateCategories(categories) {
+            const container = domElements.categoriesContainer;
+            container.innerHTML = '';
+            categories.forEach(category => {
+                const categoryEl = document.createElement('div');
+                categoryEl.className = 'category';
+                categoryEl.onclick = () => navigateTo('products', category.id);
+                categoryEl.innerHTML = `
+                    <div class="category-icon-wrapper"><i class="${category.icon} category-icon-fa" aria-hidden="true"></i></div>
+                    <p class="category-name">${category.name}</p>
+                    <p class="category-subtitle" id="category-count-${category.id}">${category.subtitle}</p>
+                `;
+                container.appendChild(categoryEl);
+            });
+        }
+
+        function populateFeaturedProducts(categories, products) {
+            const container = domElements.productListings;
+            container.innerHTML = '';
+            categories.forEach(category => {
+                const featuredSection = document.createElement('div');
+                featuredSection.innerHTML = `
+                    <div class="featured-section-header">
+                        <h2 class="category-title">${category.name}</h2>
+                        <a class="view-all" onclick="navigateTo('products', '${category.id}')">View All <i class="fas fa-angle-double-right" style="font-size: 0.8em;"></i></a>
+                    </div>
+                    <div class="homepage-products-grid" id="featured-${category.id}-grid"></div>
+                `;
+                container.appendChild(featuredSection);
+
+                const grid = document.getElementById(`featured-${category.id}-grid`);
+                const featuredProducts = products.filter(p => p.category === category.id && p.isFeatured).slice(0, 3);
+
+                if (featuredProducts.length > 0) {
+                    featuredProducts.forEach(product => {
+                        grid.appendChild(renderProductCard(product, true));
+                    });
+                } else {
+                    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#999;">No featured products in this category.</p>';
+                }
+            });
+            setupImageLoading();
+        }
+
+        function populateMobileMenu(categories) {
+            const nav = domElements.offCanvasNav;
+            nav.innerHTML = `
+                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('home'); closeOffCanvasMenu(); return false;">
+                    <i class="fas fa-home"></i> <span>Home</span>
+                </a>
+                <a href="#" class="off-canvas-nav-item" onclick="navigateTo('products', 'all'); closeOffCanvasMenu(); return false;">
+                    <i class="fas fa-store"></i> <span>All Products</span>
+                </a>
+            `;
+            categories.forEach(category => {
+                const link = document.createElement('a');
+                link.href = '#';
+                link.className = 'off-canvas-nav-item';
+                link.onclick = () => { navigateTo('products', category.id); closeOffCanvasMenu(); return false; };
+                link.innerHTML = `<i class="${category.icon}"></i> <span>${category.name}</span>`;
+                nav.appendChild(link);
+            });
         }
 
         function createSkeletonCard(isFeaturedCard = false) {
@@ -2408,7 +2266,24 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
         window.onpopstate = function(event) { if (event.state && event.state.page) { navigateToWithoutHistory(event.state.page, event.state.context, event.state.searchTerm); } else { handleHashChange(false); } };
         function openOffCanvasMenu() { if(domElements.offCanvasMenu) domElements.offCanvasMenu.classList.add('active'); if(domElements.offCanvasOverlay) domElements.offCanvasOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeOffCanvasMenu() { if(domElements.offCanvasMenu) domElements.offCanvasMenu.classList.remove('active'); if(domElements.offCanvasOverlay) domElements.offCanvasOverlay.classList.remove('active'); document.body.style.overflow = ''; }
-        function updateCategoryCountsInDOM() { const dataToUse = (allProductsData && allProductsData.length > 0) ? allProductsData : generateDemoProducts(); const categoryCounts = { course: 0, subscription: 0, software: 0, ebook: 0 }; dataToUse.forEach(product => { if (categoryCounts.hasOwnProperty(product.category)) { categoryCounts[product.category]++; } }); const categoryDisplayMap = { course: { id: 'category-count-course', singular: 'Premium Course', plural: 'Premium Courses' }, subscription: { id: 'category-count-subscription', singular: 'Premium Service', plural: 'Premium Services' }, software: { id: 'category-count-software', singular: 'Bundle Package', plural: 'Bundle Packages' }, ebook: { id: 'category-count-ebook', singular: 'Digital Guide', plural: 'Digital Guides' } }; for (const key in categoryCounts) { const element = document.getElementById(categoryDisplayMap[key].id); if (element) { const count = categoryCounts[key]; element.textContent = `${count} ${count === 1 ? categoryDisplayMap[key].singular : categoryDisplayMap[key].plural}`; } } }
+        function updateCategoryCountsInDOM(categories, products) {
+            const productCounts = {};
+            products.forEach(product => {
+                productCounts[product.category] = (productCounts[product.category] || 0) + 1;
+            });
+
+            categories.forEach(category => {
+                const element = document.getElementById(`category-count-${category.id}`);
+                if (element) {
+                    const count = productCounts[category.id] || 0;
+                    // Extract singular/plural from subtitle
+                    const subtitleParts = category.subtitle.split(' ');
+                    const singular = subtitleParts.slice(1).join(' ').replace(/s$/, '');
+                    const plural = singular + 's';
+                    element.textContent = `${count} ${count === 1 ? singular : plural}`;
+                }
+            });
+        }
         function setupSingleImageLoading(imgElement, onImageLoadCallback) { if (!imgElement) return; const container = imgElement.closest('.banner-image-container, .product-card-image-container, .product-detail-main-image-container, .related-product-image-container'); if (!container) { if (imgElement.complete && imgElement.naturalHeight !== 0) { imgElement.classList.add('loaded'); } else { imgElement.onload = () => imgElement.classList.add('loaded'); } if (typeof onImageLoadCallback === 'function') { onImageLoadCallback(); } return; } const skeleton = container.querySelector('.skeleton'); const placeholderText = container.querySelector('.image-placeholder-text'); const handleLoad = () => { if (skeleton) { skeleton.style.display = 'none'; } imgElement.classList.add('loaded'); if (placeholderText) placeholderText.style.display = 'none'; if (typeof onImageLoadCallback === 'function') { onImageLoadCallback(); } }; const handleError = () => { if (skeleton) { skeleton.style.display = 'none'; } imgElement.style.display = 'none'; if (placeholderText) placeholderText.style.display = 'block'; if (typeof onImageLoadCallback === 'function') { onImageLoadCallback(); } }; if (imgElement.complete && imgElement.naturalHeight !== 0) { handleLoad(); } else { imgElement.onload = handleLoad; imgElement.onerror = handleError; if (imgElement.complete && imgElement.naturalHeight !== 0) { handleLoad(); } } }
         function setupImageLoading() { document.querySelectorAll('img.image-fade-in').forEach(img => setupSingleImageLoading(img)); }
         
@@ -2424,7 +2299,7 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             if (domElements.offCanvasOverlay) domElements.offCanvasOverlay.addEventListener('click', closeOffCanvasMenu);
             if (domElements.allProductsIcon) { domElements.allProductsIcon.addEventListener('click', () => navigateTo('products', 'all')); }
             if (domElements.ordersIcon) { domElements.ordersIcon.addEventListener('click', () => navigateTo('orders')); }
-            window.addEventListener('resize', () => { updateBodyClassForSearchVisibility(currentPage); if (currentPage === 'home') { showGuaranteedSkeletonForHomepage(); displayActualContent(); } if (window.innerWidth > 768 && document.body.classList.contains('show-mobile-search')) { document.body.classList.remove('show-mobile-search'); } });
+            window.addEventListener('resize', () => { updateBodyClassForSearchVisibility(currentPage); if (currentPage === 'home') { fetchCategoriesAndProducts(); } if (window.innerWidth > 768 && document.body.classList.contains('show-mobile-search')) { document.body.classList.remove('show-mobile-search'); } });
             if (domElements.desktopSearchButton && domElements.searchInput) { domElements.desktopSearchButton.addEventListener('click', () => { handleSearch(domElements.searchInput.value); }); }
             if (domElements.searchInput) { domElements.searchInput.addEventListener('keypress', function(event) { if (event.key === 'Enter') { event.preventDefault(); handleSearch(this.value); } }); }
             if (domElements.mobileHeaderSearchIcon && domElements.mobileSearchContainer) { domElements.mobileHeaderSearchIcon.addEventListener('click', () => { const body = document.body; const searchableMobilePages = ['home', 'products']; if (searchableMobilePages.includes(currentPage)) { body.classList.toggle('show-mobile-search'); if (body.classList.contains('show-mobile-search') && domElements.mobileSearchInput) { domElements.mobileSearchInput.focus(); } } else { showToast("Search is available on Home and Products pages.", "info"); body.classList.remove('show-mobile-search'); } }); }
@@ -2754,7 +2629,7 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             setupEventListeners(); 
             loadCartFromLocalStorage(); 
             loadOrdersFromLocalStorage(); 
-            await fetchProducts(true);
+            await fetchCategoriesAndProducts();
             handleHashChange(true); 
             updateOrdersNotification();
             window.addEventListener('hashchange', () => handleHashChange(false)); 
